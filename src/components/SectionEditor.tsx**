@@ -1,0 +1,25 @@
+**
+
+```jsx
+import React from 'react';
+
+const SectionEditor = () => {
+  return (
+    <div>
+      <button aria-label="Delete section">
+        <i className="icon-delete"></i>
+      </button>
+      <button aria-label="Drag to reorder">
+        <i className="icon-drag"></i>
+      </button>
+      <button aria-label="Toggle sidebar">
+        <i className="icon-sidebar"></i>
+      </button>
+    </div>
+  );
+};
+
+export default SectionEditor;
+```
+
+**
