@@ -2,214 +2,142 @@
 
 # Eno README Lab
 
-**A browser-based README builder and editor for open-source projects.**
+**A fast, interactive browser-based README builder for open-source maintainers and developers.**
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Next.js](https://img.shields.io/badge/built_with-Next.js_16-black?logo=next.js)
-![TypeScript](https://img.shields.io/badge/language-TypeScript-3178c6?logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/styled_with-Tailwind_CSS-06b6d4?logo=tailwindcss)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06b6d4?logo=tailwindcss)](https://tailwindcss.com/)
+[![CI](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/actions)
 
-[Features](#features) • [Tech Stack](#tech-stack) • [Getting Started](#getting-started) • [Usage](#usage) • [Deploy](#deploy) • [Contributing](#contributing)
+[Try Demo](http://localhost:3000) • [Key Features](#features) • [Quickstart](#quickstart) • [Roadmap](#roadmap) • [Contributing](#contributing)
 
 </div>
 
 ---
 
-## About
+## 💡 About Eno README Lab
 
-Eno README Lab is a polished, browser-based tool that helps open-source maintainers create professional README files without writing markdown from scratch. Choose a template, fill in your project details, drag-and-drop sections, add badges, and export a beautiful README.md — all without leaving your browser.
+Writing an engaging, well-structured `README.md` from scratch can be tedious and time-consuming. **Eno README Lab** empowers open-source maintainers, indie hackers, and developers to craft professional README files in minutes.
 
-**No signup required. No server processing. Your data never leaves your browser.**
+With drag-and-drop section arrangement, real-time GitHub Flavored Markdown preview, curated Shields.io badges, and an automated best-practices validator, you can focus on building great software while ensuring your repository makes a fantastic first impression.
 
-## Features
+> **🔒 100% Client-Side & Privacy-First**: Everything runs in your browser. No signup required, no database, and your project data never leaves your device.
 
-- **Smart Templates** — Pre-built templates for web apps, libraries, CLI tools, and starter repos
-- **Live Preview** — Real-time markdown rendering as you type
-- **Drag & Drop** — Reorder sections with intuitive drag-and-drop
-- **Badge Helper** — Browse and insert 40+ badges powered by shields.io
-- **Best Practices Checklist** — Built-in checklist for open-source README essentials
-- **Heading Validator** — Validates heading structure and catches common mistakes
-- **One-Click Export** — Download as README.md or copy to clipboard
-- **Section Blocks** — Add, remove, enable, or disable any section
-- **Dark Mode** — Full dark mode support throughout the editor
-- **Responsive Design** — Works beautifully on desktop and mobile
-- **100% Client-Side** — No server required, works offline after initial load
+---
 
-## Tech Stack
+## ✨ Features
 
-| Technology | Purpose |
-|------------|---------|
-| **Next.js 16** | React framework with App Router |
-| **TypeScript** | Type-safe development |
-| **Tailwind CSS** | Utility-first styling |
-| **@dnd-kit** | Drag-and-drop functionality |
-| **react-markdown** | Markdown rendering |
-| **remark-gfm** | GitHub Flavored Markdown support |
-| **lucide-react** | Beautiful icons |
+- **🎯 Curated Starter Templates**: Pre-configured templates tailored for Web Apps, Libraries/Packages, CLI Tools, and Minimal projects.
+- **⚡ Real-Time Live Preview**: Instant split-view Markdown rendering powered by `react-markdown` and `remark-gfm`.
+- **🖐️ Drag & Drop Section Sorting**: Effortlessly organize sections using accessible drag-and-drop handles (`@dnd-kit`).
+- **🛡️ Shields.io Badge Library**: Explore, customize, and insert status badges (build status, versions, social links, licenses) with one click.
+- **✅ Best Practices Checklist**: Built-in interactive checklist highlighting essential, recommended, and optional sections.
+- **🔍 Heading Structure Validator**: Real-time linting for Markdown heading hierarchies (catches missing H1, heading level skips, etc.).
+- **💾 One-Click Export**: Instantly copy raw Markdown to your clipboard or download a ready-to-commit `README.md`.
+- **🌙 Seamless Dark Theme**: Modern dark aesthetic designed for developer comfort.
 
-## Getting Started
+---
+
+## 🚀 Quickstart
 
 ### Prerequisites
-
-- Node.js 18+
+- Node.js 18.x or 20.x+
 - npm, yarn, or pnpm
 
-### Installation
+### Running Locally
 
 ```bash
-# Clone the repository
-git clone https://github.com/username/eno-readme-lab.git
-cd eno-readme-lab
+# 1. Clone the repository
+git clone https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab.git
+cd youralpha-08-eno-readme-lab
 
-# Install dependencies
+# 2. Install dependencies
 npm install
 
-# Start development server
+# 3. Start the development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser. The live editor is available at `/editor`.
 
 ### Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
-
-## Usage
-
-1. **Choose a template** — Select from Web App, Library, CLI Tool, or Starter Template
-2. **Fill in project details** — Enter your project name, description, version, license, and repository URL
-3. **Edit sections** — Each section has a dedicated editor with markdown support
-4. **Add badges** — Use the Badge Helper to browse and insert status badges
-5. **Drag to reorder** — Drag sections by the grip handle to reorder them
-6. **Check best practices** — Use the sidebar checklist to ensure completeness
-7. **Preview & export** — See the live preview and export when ready
-
-### Section Types
-
-- **Header** — Auto-generated from project name and description
-- **Badges** — Status badges powered by shields.io
-- **Description** — Project overview and purpose
-- **Features** — Key features list
-- **Screenshots** — Visual preview placeholders
-- **Installation** — Setup and install instructions
-- **Usage** — How to use the project
-- **Tech Stack** — Technologies and frameworks used
-- **Roadmap** — Future plans and upcoming features
-- **Contributing** — Contribution guidelines
-- **FAQ** — Frequently asked questions
-- **License** — Auto-generated from license selection
-- **Custom** — Add any custom section
-
-## Deploy
-
-### Vercel (Recommended)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/username/eno-readme-lab)
-
-1. Push your code to GitHub
-2. Import the repository on [Vercel](https://vercel.com)
-3. Vercel will auto-detect Next.js and deploy
-
-### Other Platforms
-
-This project can be deployed to any platform that supports Next.js:
-
-- **Netlify** — Use the Next.js runtime
-- **AWS Amplify** — Connect your repository
-- **Railway** — One-click deploy
-- **Docker** — Create your own Dockerfile
-
-## Project Structure
-
-```
-eno-readme-lab/
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx          # Root layout with metadata
-│   │   ├── page.tsx            # Landing page
-│   │   ├── globals.css         # Global styles
-│   │   └── editor/
-│   │       └── page.tsx        # Main editor page
-│   ├── components/
-│   │   ├── ui/                 # Reusable UI components
-│   │   │   ├── Button.tsx
-│   │   │   ├── BadgePicker.tsx
-│   │   │   ├── Checklist.tsx
-│   │   │   ├── ValidationPanel.tsx
-│   │   │   └── TemplateSelector.tsx
-│   │   ├── editor/             # Editor components
-│   │   │   ├── SectionEditor.tsx
-│   │   │   └── SortableSection.tsx
-│   │   ├── preview/            # Preview components
-│   │   │   └── MarkdownPreview.tsx
-│   │   └── landing/            # Landing page components
-│   │       └── FeatureCard.tsx
-│   ├── data/                   # Static data
-│   │   ├── badges.ts
-│   │   └── templates.ts
-│   ├── lib/                    # Utilities
-│   │   ├── utils.ts
-│   │   └── markdown.ts
-│   └── types/                  # TypeScript types
-│       └── index.ts
-├── public/                     # Static assets
-├── package.json
-├── tsconfig.json
-├── postcss.config.mjs
-├── .env.example
-└── next.config.ts
-```
-
-## Roadmap
-
-- [x] Core editor with all sections
-- [x] Live markdown preview
-- [x] Template system (app, library, CLI, starter)
-- [x] Badge helper with shields.io integration
-- [x] Drag-and-drop section reordering
-- [x] Best practices checklist
-- [x] Heading structure validator
-- [x] One-click export
-- [x] Dark mode support
-- [ ] Import existing README.md
-- [ ] Custom CSS themes for preview
-- [ ] More badge categories
-- [ ] Collaborative editing
-- [ ] AI-powered suggestions (optional)
-
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing`)
-3. Commit your changes (`git commit -m "Add amazing feature"`)
-4. Push to the branch (`git push origin feature/amazing`)
-5. Open a Pull Request
-
-Please read the [Contributing Guidelines](CONTRIBUTING.md) before submitting.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-- [shields.io](https://shields.io) — For the badge service
-- [Next.js](https://nextjs.org) — The React framework
-- [Tailwind CSS](https://tailwindcss.com) — For the styling system
-- [lucide-react](https://lucide.dev) — For the beautiful icons
+| Command | Purpose |
+|---------|---------|
+| `npm run dev` | Start Next.js development server with hot-reloading |
+| `npm run build` | Compile optimized production build |
+| `npm run start` | Serve production build locally |
+| `npm run lint` | Run ESLint across all TypeScript and React files |
 
 ---
 
+## 🗺️ Roadmap
+
+We maintain a transparent roadmap reflecting the real direction of the project:
+
+### ✅ Completed
+- [x] Responsive Landing Page and Editor split-view interface
+- [x] Drag-and-drop section reordering with `@dnd-kit`
+- [x] Shields.io badge picker and category explorer
+- [x] Heading hierarchy and structure validator
+- [x] Standard starter templates (Web App, Library, CLI, Minimal)
+- [x] Markdown export & clipboard copying
+
+### 🔄 In Progress / Planned
+- [ ] **Import existing README**: Parse and populate editor sections from an existing `README.md` file.
+- [ ] **Local Storage Auto-Save**: Automatically persist in-progress drafts so refreshing doesn't lose data.
+- [ ] **Comprehensive Unit Test Suite**: Unit tests for Markdown compiler and heading validator functions.
+
+### 🤝 Help Wanted (Great for Community Contributions!)
+- [ ] **New Badge Categories**: Add categories for cloud providers, databases, and CI services in `src/data/badges.ts`.
+- [ ] **Accessibility (a11y) Enhancements**: Keyboard navigation and `aria-*` improvements across editor controls.
+- [ ] **Mobile Drawer / Toggle**: Smoother mobile responsive preview toggle.
+
+### 🔮 Future Ideas
+- [ ] Customizable preview CSS themes (GitHub Light, GitHub Dark, Minimalist).
+- [ ] Mermaid diagram section generator block.
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open-source community an incredible place to learn, inspire, and create! Any contributions you make are **greatly appreciated**.
+
+Check out our [Contributing Guide](CONTRIBUTING.md) for step-by-step instructions on setting up your environment, coding standards, and how to submit a Pull Request.
+
+Looking for a place to start? Check our issues labeled:
+- [`good first issue`](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+- [`help wanted`](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+
+Please make sure to follow our [Code of Conduct](CODE_OF_CONDUCT.md) in all community interactions.
+
+---
+
+## 👥 Contributors
+
+Thank you to everyone who contributes time, code, and feedback to Eno README Lab!
+
+<!-- Contributors list will be automatically reflected here as the community grows -->
+Contributions of any kind — bug reports, documentation clarifications, code fixes, or new template ideas — are always welcome. See the [GitHub Contributor Graph](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/graphs/contributors) for all recognized contributors.
+
+---
+
+## ☕ Support
+
+If you find Eno README Lab helpful for your open-source projects, you can optionally support its ongoing maintenance and development:
+
 <div align="center">
 
-**Built with ❤️ for the open-source community**
+[![Buy Me A Coffee](https://img.shields.io/badge/Support-Buy%20Me%20A%20Coffee-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/enoalph)
 
 </div>
+
+*Whether or not you donate, your code contributions, issue reports, and feedback are always deeply valued.*
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.

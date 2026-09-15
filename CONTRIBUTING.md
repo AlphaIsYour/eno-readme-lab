@@ -1,87 +1,130 @@
 # Contributing to Eno README Lab
 
-Thank you for your interest in contributing! This document provides guidelines and instructions for contributing.
+First off, thank you for considering contributing to Eno README Lab! ✨
+Whether you're fixing a typo, resolving a bug, improving accessibility, or proposing a new template, all contributions are warmly welcomed.
 
-## How to Contribute
+---
 
-### Reporting Bugs
+## 🧭 First Time Contributing?
 
-1. Check existing [issues](https://github.com/username/eno-readme-lab/issues) to avoid duplicates
-2. Create a new issue with a clear title and description
-3. Include steps to reproduce, expected behavior, and actual behavior
-4. Add screenshots if applicable
+If you are new to open-source or to this repository, take a look at issues labeled:
+- [`good first issue`](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) — Smaller, well-scoped tasks with clear requirements.
+- [`help wanted`](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) — Features or fixes where we are looking for community input and help.
 
-### Suggesting Features
+Feel free to comment on an issue to ask questions or claim it before you start working.
 
-1. Open a new issue with the `enhancement` label
-2. Describe the feature and its use case
-3. Explain why it would be valuable
+---
 
-### Submitting Code
+## 🛠️ Local Development Setup
 
-1. Fork the repository
-2. Create a feature branch from `main`:
+### Prerequisites
+- **Node.js**: 18.x or 20.x+
+- **npm** (or `pnpm` / `yarn`)
+- **Git**
+
+### Steps
+1. **Fork the repository** on GitHub.
+2. **Clone your fork** locally:
    ```bash
-   git checkout -b feature/your-feature-name
+   git clone https://github.com/YOUR_USERNAME/eno-readme-lab.git
+   cd eno-readme-lab
    ```
-3. Make your changes
-4. Follow the code style guidelines below
-5. Test your changes thoroughly
-6. Commit with a clear message:
+3. **Install dependencies**:
    ```bash
-   git commit -m "Add: description of your changes"
+   npm install
    ```
-7. Push to your fork:
+4. **Start the development server**:
    ```bash
-   git push origin feature/your-feature-name
+   npm run dev
    ```
-8. Open a Pull Request
+5. Open [http://localhost:3000](http://localhost:3000) in your browser. The app supports hot module reloading.
 
-## Code Style Guidelines
+---
 
-- **TypeScript** — Use TypeScript for all new code
-- **Components** — Use functional components with hooks
-- **Naming** — Use PascalCase for components, camelCase for functions/variables
-- **Imports** — Use absolute imports with `@/` prefix
-- **Styling** — Use Tailwind CSS utility classes
-- **Comments** — Add comments for complex logic only
-- **Types** — Define proper TypeScript types, avoid `any`
+## 🌿 Branching & Git Workflow
 
-## Project Structure
+1. Ensure your local `master` branch is synchronized with upstream:
+   ```bash
+   git checkout master
+   git pull origin master
+   ```
+2. Create a descriptive feature branch:
+   ```bash
+   git checkout -b fix/heading-skip-warning
+   # or
+   git checkout -b feat/add-storage-sync
+   ```
+3. Make atomic, focused commits with meaningful commit messages:
+   ```bash
+   git commit -m "fix(markdown): ignore code blocks in heading structure validation"
+   ```
+4. Push your branch to your GitHub fork:
+   ```bash
+   git push origin fix/heading-skip-warning
+   ```
+5. Open a Pull Request against the `master` branch using our PR template.
 
-- `src/components/ui/` — Reusable UI components
-- `src/components/editor/` — Editor-specific components
-- `src/components/preview/` — Preview components
-- `src/components/landing/` — Landing page components
-- `src/data/` — Static data (badges, templates)
-- `src/lib/` — Utility functions
-- `src/types/` — TypeScript type definitions
+---
 
-## Development Setup
+## 📐 Architecture Overview
 
-```bash
-# Clone your fork
-git clone https://github.com/your-username/eno-readme-lab.git
-cd eno-readme-lab
+Eno README Lab is built as a 100% client-side Next.js 16 (App Router) application. No backend or database is required.
 
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
+```
+src/
+├── app/
+│   ├── layout.tsx         # Root HTML layout and metadata
+│   ├── page.tsx           # Interactive landing page
+│   ├── globals.css        # Global Tailwind CSS styling
+│   └── editor/
+│       └── page.tsx       # Core editor application (state, dnd, layout)
+├── components/
+│   ├── editor/            # SectionEditor, SortableSection (dnd-kit wrapper)
+│   ├── preview/           # MarkdownPreview (react-markdown live renderer)
+│   ├── landing/           # Landing page showcase cards
+│   └── ui/                # Reusable UI (BadgePicker, Checklist, ValidationPanel, Button)
+├── data/
+│   ├── badges.ts          # Catalog of Shields.io badges by category
+│   └── templates.ts       # Starter templates (Web App, CLI, Library, Minimalist)
+├── lib/
+│   ├── markdown.ts        # Markdown compiler, heading validator, and checklist definition
+│   └── utils.ts           # Utility helpers (IDs, class merging)
+└── types/
+    └── index.ts           # TypeScript type declarations
 ```
 
-## Commit Messages
+---
 
-Use clear, descriptive commit messages:
+## 🧪 Verification & Code Quality
 
-- `Add: new feature or functionality`
-- `Fix: bug fix`
-- `Update: improvement to existing feature`
-- `Refactor: code restructuring without behavior change`
-- `Docs: documentation changes`
-- `Style: formatting, missing semicolons, etc.`
+Before pushing your changes and opening a Pull Request, please ensure:
 
-## Questions?
+1. **Lint check passes**:
+   ```bash
+   npm run lint
+   ```
+2. **Production build succeeds**:
+   ```bash
+   npm run build
+   ```
+3. **Responsive behavior**:
+   Check that your changes look right on both desktop and mobile viewports.
 
-Feel free to open an issue for any questions about contributing.
+---
+
+## 💬 Code Style Guidelines
+
+- **TypeScript**: Strive for strict types; avoid using `any`.
+- **Components**: Functional components with React hooks.
+- **Styling**: Tailwind CSS utility classes; keep custom CSS minimal.
+- **Imports**: Use path aliases (`@/components/...`, `@/lib/...`).
+- **Simplicity**: Favor clean, readable code over clever abstractions.
+
+---
+
+## ❓ Have Questions or Need Help?
+
+- If you encounter a bug, open an issue using the [Bug Report](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/issues/new?template=bug_report.md) template.
+- For feature proposals or general questions, feel free to open an issue or initiate a GitHub Discussion.
+
+Thank you for helping make Eno README Lab better! 🚀

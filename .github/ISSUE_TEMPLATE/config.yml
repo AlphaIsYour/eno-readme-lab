@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask Questions & Discuss Ideas
+    url: https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/discussions
+    about: Please ask questions and discuss ideas before opening major feature issues.
