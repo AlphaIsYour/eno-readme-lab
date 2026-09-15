@@ -139,9 +139,20 @@ export function validateHeadingStructure(markdown: string): { valid: boolean; wa
   let hasH1 = false;
   let lastLevel = 0;
   const headings: { level: number; text: string; line: number }[] = [];
+  let isInCodeBlock = false;
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
+
+    if (line.startsWith('```') || line.startsWith('~~~')) {
+      isInCodeBlock = !isInCodeBlock;
+      continue;
+    }
+
+    if (isInCodeBlock) {
+      continue;
+    }
+
     const match = line.match(/^(#{1,6})\s+(.+)/);
     if (match) {
       const level = match[1].length;
