@@ -1,0 +1,30 @@
+**
+```typescript
+import { isCodeBlock } from './utils';
+
+function validateHeadingStructure(markdownContent: string): void {
+  let isInCodeBlock = false;
+  const lines = markdownContent.split('\n');
+
+  lines.forEach((line, index) => {
+    if (isCodeBlock(line)) {
+      isInCodeBlock = !isInCodeBlock;
+      return;
+    }
+
+    if (isInCodeBlock) {
+      return;
+    }
+
+    const headingMatch = line.match(/^(#{1,6})\s+(.+)/);
+    if (headingMatch) {
+      const headingLevel = headingMatch[1].length;
+      // Validate heading structure and other logic here
+    }
+  });
+}
+
+// Helper function to check if the line is inside a code block
+function isCodeBlock(line: string): boolean {
+  return line.trimStart().startsWith('```') || line.trimEnd().endsWith('```');
+}
