@@ -1,4 +1,18 @@
-import { Section, ProjectData } from '@/types';
+import type { Section, ProjectData } from '@/types';
+
+/**
+ * Encode a dynamic value for use in a shields.io static badge URL
+ * (`https://img.shields.io/badge/<label>-<message>-<color>`).
+ *
+ * Shields.io uses `-` as a field separator, so literal dashes/underscores
+ * must be escaped per its spec (`-` -> `--`, `_` -> `__`, space -> `_`).
+ * Remaining special characters (e.g. `/`, `+`) are percent-encoded so badge
+ * URLs stay valid for inputs like `Apache 2.0` or `v1.0.0-beta/1`.
+ */
+export function encodeShieldParam(value: string): string {
+  const escaped = value.replace(/-/g, '--').replace(/_/g, '__').replace(/ /g, '_');
+  return encodeURIComponent(escaped);
+}
 
 export function generateMarkdown(project: ProjectData): string {
   const parts: string[] = [];
@@ -58,10 +72,10 @@ function renderHeader(project: ProjectData): string {
     header += `**${project.description}**\n\n`;
   }
   if (project.version) {
-    header += `![Version](https://img.shields.io/badge/version-${project.version}-blue) `;
+    header += `![Version](https://img.shields.io/badge/version-${encodeShieldParam(project.version)}-blue) `;
   }
   if (project.license) {
-    header += `![License](https://img.shields.io/badge/license-${project.license}-green) `;
+    header += `![License](https://img.shields.io/badge/license-${encodeShieldParam(project.license)}-green) `;
   }
   header += `\n\n</div>`;
   return header;
