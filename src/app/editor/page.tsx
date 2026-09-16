@@ -21,6 +21,7 @@ import { Section, ProjectData, ChecklistItem, Template } from '@/types';
 import { generateId } from '@/lib/utils';
 import { generateMarkdown, validateHeadingStructure, getDefaultChecklist } from '@/lib/markdown';
 import { templates } from '@/data/templates';
+import { LICENSE_PRESETS } from '@/data/licenses';
 import SortableSection from '@/components/editor/SortableSection';
 import MarkdownPreview from '@/components/preview/MarkdownPreview';
 import BadgePicker from '@/components/ui/BadgePicker';
@@ -399,16 +400,28 @@ export default function EditorPage() {
                     </label>
                     <select
                       value={project.license}
-                      onChange={(e) => setProject((p) => ({ ...p, license: e.target.value }))}
+                      onChange={(e) => {
+                        const newLicense = e.target.value;
+                        const preset = LICENSE_PRESETS.find(
+                          (l) => l.badgeValue === newLicense || l.id === newLicense
+                        );
+                        setProject((p) => {
+                          const updatedSections = p.sections.map((s) => {
+                            if (s.type === 'license' && preset) {
+                              return { ...s, content: preset.clause };
+                            }
+                            return s;
+                          });
+                          return { ...p, license: newLicense, sections: updatedSections };
+                        });
+                      }}
                       className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white"
                     >
-                      <option value="MIT">MIT</option>
-                      <option value="Apache--2.0">Apache 2.0</option>
-                      <option value="GPL--3.0">GPL 3.0</option>
-                      <option value="BSD--3--Clause">BSD 3-Clause</option>
-                      <option value="MPL--2.0">MPL 2.0</option>
-                      <option value="Unlicense">Unlicense</option>
-                      <option value="ISC">ISC</option>
+                      {LICENSE_PRESETS.map((lic) => (
+                        <option key={lic.id} value={lic.badgeValue}>
+                          {lic.name}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div>
@@ -477,6 +490,7 @@ export default function EditorPage() {
                           section={section}
                           onUpdate={updateSection}
                           onDelete={() => deleteSection(section.id)}
+                          onLicenseChange={(lic) => setProject((p) => ({ ...p, license: lic }))}
                         />
                       ))}
                   </div>
