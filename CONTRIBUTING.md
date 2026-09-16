@@ -8,6 +8,7 @@ Whether you're fixing a typo, resolving a bug, improving accessibility, or propo
 ## 🧭 First Time Contributing?
 
 If you are new to open-source or to this repository, take a look at issues labeled:
+
 - [`good first issue`](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) — Smaller, well-scoped tasks with clear requirements.
 - [`help wanted`](https://github.com/AlphaIsYour/youralpha-08-eno-readme-lab/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) — Features or fixes where we are looking for community input and help.
 
@@ -18,11 +19,13 @@ Feel free to comment on an issue to ask questions or claim it before you start w
 ## 🛠️ Local Development Setup
 
 ### Prerequisites
+
 - **Node.js**: 18.x or 20.x+
 - **npm** (or `pnpm` / `yarn`)
 - **Git**
 
 ### Steps
+
 1. **Fork the repository** on GitHub.
 2. **Clone your fork** locally:
    ```bash
@@ -99,15 +102,24 @@ src/
 
 Before pushing your changes and opening a Pull Request, please ensure:
 
-1. **Lint check passes**:
+1. **Code formatting**:
+   Format your code using Prettier before committing:
+   ```bash
+   npm run format
+   ```
+   Or verify format without writing:
+   ```bash
+   npm run format:check
+   ```
+2. **Lint check passes**:
    ```bash
    npm run lint
    ```
-2. **Production build succeeds**:
+3. **Production build succeeds**:
    ```bash
    npm run build
    ```
-3. **Responsive behavior**:
+4. **Responsive behavior**:
    Check that your changes look right on both desktop and mobile viewports.
 
 ---
