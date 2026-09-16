@@ -41,7 +41,7 @@ function renderSection(section: Section, project: ProjectData): string {
     case 'faq':
       return renderFAQ(section);
     case 'license':
-      return renderLicense(project);
+      return renderLicense(project, section);
     case 'acknowledgements':
       return renderAcknowledgements(section);
     case 'custom':
@@ -122,7 +122,10 @@ function renderFAQ(section: Section): string {
   return `## FAQ\n\n${section.content}`;
 }
 
-function renderLicense(project: ProjectData): string {
+function renderLicense(project: ProjectData, section?: Section): string {
+  if (section && section.content.trim()) {
+    return `## License\n\n${section.content}`;
+  }
   const license = project.license || 'MIT';
   return `## License\n\nThis project is licensed under the ${license} License. See the [LICENSE](LICENSE) file for details.`;
 }

@@ -9,9 +9,10 @@ interface SortableSectionProps {
   section: Section;
   onUpdate: (section: Section) => void;
   onDelete: () => void;
+  onLicenseChange?: (badgeValue: string) => void;
 }
 
-export default function SortableSection({ section, onUpdate, onDelete }: SortableSectionProps) {
+export default function SortableSection({ section, onUpdate, onDelete, onLicenseChange }: SortableSectionProps) {
   const {
     attributes,
     listeners,
@@ -35,6 +36,7 @@ export default function SortableSection({ section, onUpdate, onDelete }: Sortabl
         onUpdate={onUpdate}
         onDelete={onDelete}
         dragHandleProps={listeners}
+        onLicenseChange={onLicenseChange}
       />
     </div>
   );

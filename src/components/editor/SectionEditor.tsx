@@ -22,12 +22,14 @@ import {
   Award,
 } from 'lucide-react';
 import { useState } from 'react';
+import { LICENSE_PRESETS, CONTRIBUTING_PRESETS } from '@/data/licenses';
 
 interface SectionEditorProps {
   section: Section;
   onUpdate: (section: Section) => void;
   onDelete: () => void;
   dragHandleProps?: Record<string, unknown>;
+  onLicenseChange?: (badgeValue: string) => void;
 }
 
 const sectionIcons: Record<string, React.ElementType> = {
@@ -64,7 +66,7 @@ const sectionPlaceholders: Record<string, string> = {
   custom: 'Enter your custom content here...',
 };
 
-export default function SectionEditor({ section, onUpdate, onDelete, dragHandleProps }: SectionEditorProps) {
+export default function SectionEditor({ section, onUpdate, onDelete, dragHandleProps, onLicenseChange }: SectionEditorProps) {
   const [collapsed, setCollapsed] = useState(false);
   const Icon = sectionIcons[section.type] || FileText;
 
@@ -134,17 +136,66 @@ export default function SectionEditor({ section, onUpdate, onDelete, dragHandleP
               Header is auto-generated from your project name and description above.
             </p>
           ) : section.type === 'license' ? (
-            <p className="text-xs text-gray-500 dark:text-gray-400 italic">
-              License section is auto-generated from the license field above.
-            </p>
+            <div className="space-y-3">
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                  License Chooser
+                </label>
+                <select
+                  onChange={(e) => {
+                    const preset = LICENSE_PRESETS.find((l) => l.id === e.target.value);
+                    if (preset) {
+                      handleChange('content', preset.clause);
+                      onLicenseChange?.(preset.badgeValue);
+                    }
+                  }}
+                  defaultValue=""
+                  className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                >
+                  <option value="" disabled>Select license preset (MIT, Apache 2.0, GPL-3.0, BSD-3-Clause, Unlicense)...</option>
+                  {LICENSE_PRESETS.map((lic) => (
+                    <option key={lic.id} value={lic.id}>
+                      {lic.name} — {lic.summary}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <textarea
+                value={section.content}
+                onChange={(e) => handleChange('content', e.target.value)}
+                placeholder="This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details."
+                rows={4}
+                className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3 text-sm text-gray-700 dark:text-gray-300 font-mono resize-y focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              />
+              <p className="text-xs text-gray-400 dark:text-gray-500">
+                Selecting a license preset automatically updates the section clause and header badge.
+              </p>
+            </div>
           ) : (
-            <textarea
-              value={section.content}
-              onChange={(e) => handleChange('content', e.target.value)}
-              placeholder={sectionPlaceholders[section.type] || 'Enter content...'}
-              rows={6}
-              className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3 text-sm text-gray-700 dark:text-gray-300 font-mono resize-y focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-gray-400 dark:placeholder:text-gray-500"
-            />
+            <>
+              {section.type === 'contributing' && (
+                <div className="flex flex-wrap items-center gap-1.5 mb-2.5">
+                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400">Quick Presets:</span>
+                  {CONTRIBUTING_PRESETS.map((preset) => (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      onClick={() => handleChange('content', preset.content)}
+                      className="px-2 py-0.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:border-emerald-300 text-gray-700 dark:text-gray-300 transition-colors"
+                    >
+                      {preset.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <textarea
+                value={section.content}
+                onChange={(e) => handleChange('content', e.target.value)}
+                placeholder={sectionPlaceholders[section.type] || 'Enter content...'}
+                rows={6}
+                className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3 text-sm text-gray-700 dark:text-gray-300 font-mono resize-y focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-gray-400 dark:placeholder:text-gray-500"
+              />
+            </>
           )}
           {section.type !== 'header' && section.type !== 'license' && (
             <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
