@@ -28,7 +28,7 @@ export default function TemplateSelector({ onSelect, onClose }: TemplateSelector
           </button>
         </div>
 
-        <div className="p-5 space-y-3">
+        <div className="p-5 space-y-3 max-h-[65vh] overflow-y-auto">
           {templates.map((template) => (
             <button
               key={template.id}
