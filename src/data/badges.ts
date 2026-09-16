@@ -60,6 +60,22 @@ export const badges: Badge[] = [
   { id: 'buy-me-coffee', label: 'Buy Me A Coffee', message: '☕', color: 'FFDD00', logo: 'buymeacoffee', logoColor: 'black', url: 'https://buymeacoffee.com/username', category: 'Support' },
   { id: 'kofi', label: 'Support', message: 'Ko--fi', color: '29abe0', logo: 'ko-fi', category: 'Support' },
   { id: 'patreon', label: 'Support', message: 'Patreon', color: 'f96854', logo: 'patreon', category: 'Support' },
+
+  // Database
+  { id: 'db-postgresql', label: 'Database', message: 'PostgreSQL', color: '4169e1', logo: 'postgresql', logoColor: 'white', category: 'Database' },
+  { id: 'db-mysql', label: 'Database', message: 'MySQL', color: '4479a1', logo: 'mysql', logoColor: 'white', category: 'Database' },
+  { id: 'db-mongodb', label: 'Database', message: 'MongoDB', color: '47a248', logo: 'mongodb', logoColor: 'white', category: 'Database' },
+  { id: 'db-redis', label: 'Database', message: 'Redis', color: 'dc382d', logo: 'redis', logoColor: 'white', category: 'Database' },
+  { id: 'db-supabase', label: 'Database', message: 'Supabase', color: '3ecf8e', logo: 'supabase', logoColor: 'white', category: 'Database' },
+  { id: 'db-sqlite', label: 'Database', message: 'SQLite', color: '003b57', logo: 'sqlite', logoColor: 'white', category: 'Database' },
+
+  // Cloud & DevOps
+  { id: 'devops-docker', label: 'DevOps', message: 'Docker', color: '2496ed', logo: 'docker', logoColor: 'white', category: 'Cloud & DevOps' },
+  { id: 'devops-kubernetes', label: 'DevOps', message: 'Kubernetes', color: '326ce5', logo: 'kubernetes', logoColor: 'white', category: 'Cloud & DevOps' },
+  { id: 'cloud-aws', label: 'Cloud', message: 'AWS', color: '232f3e', logo: 'amazonwebservices', logoColor: 'white', category: 'Cloud & DevOps' },
+  { id: 'cloud-gcp', label: 'Cloud', message: 'GCP', color: '4285f4', logo: 'googlecloud', logoColor: 'white', category: 'Cloud & DevOps' },
+  { id: 'cloud-cloudflare', label: 'Cloud', message: 'Cloudflare', color: 'f38020', logo: 'cloudflare', logoColor: 'white', category: 'Cloud & DevOps' },
+  { id: 'cloud-vercel', label: 'Deploy', message: 'Vercel', color: '000000', logo: 'vercel', logoColor: 'white', category: 'Cloud & DevOps' },
 ];
 
 export function generateBadgeMarkdown(badge: Badge): string {
